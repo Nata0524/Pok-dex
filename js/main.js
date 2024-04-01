@@ -30,6 +30,14 @@ $(document).ready(() => {
     );
 });
 
+artyom.redirectRecognizedTextOutput(function (recognized, isFinal) {
+    if (isFinal) {
+        console.log(`Texto final reconocido: ${recognized}`);
+    } else {
+        console.log(recognized);
+    }
+});
+
 $("#buscar").on("click", function () {
     var nombrePokemon = $("#pokemon").val().trim();
     if (nombrePokemon.length != 0) {
@@ -49,7 +57,7 @@ $("#voz").on("click", function () {
             lang: "es-ES",
             continuous: true,
             soundex: true,
-            debug: true,
+            debug: false,
             listen: true,
             name: "Nata" 
         }).then(() => {
